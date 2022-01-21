@@ -1,0 +1,9 @@
+version: "3"
+services:
+  app:
+    build: ./
+    volumes:
+      - ./:/n
+    ports:
+      - 8080:80
+    command: uwsgi --http=0.0.0.0:80 --wsgi-file=src/main.py --callable=app --master
