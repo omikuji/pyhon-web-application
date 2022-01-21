@@ -6,4 +6,11 @@ services:
       - ./:/n
     ports:
       - 8080:80
-    command: uwsgi --http=0.0.0.0:80 --wsgi-file=src/main.py --callable=app --master
+    command: >
+      uwsgi 
+        --http=0.0.0.0:80
+        --wsgi-file=src/main.py
+        --callable=app
+        --master
+        --uid www-data
+        --enable-threads
